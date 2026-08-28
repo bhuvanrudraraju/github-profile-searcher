@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Search public GitHub profiles and recent repositories." />
+  <title>GitHub Profile Searcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow"><span aria-hidden="true">✦</span> GitHub explorer</p>
+      <h1 id="page-title">Find the people<br />building the web.</h1>
+      <p class="intro">Look up any public GitHub profile and explore their latest work in seconds.</p>
+
+      <form id="search-form" class="search-form" novalidate>
+        <label class="sr-only" for="username">GitHub username</label>
+        <input id="username" name="username" type="text" placeholder="Enter a GitHub username…" autocomplete="off" required />
+        <button type="submit">Search <span aria-hidden="true">→</span></button>
+      </form>
+      <p class="hint">Try <button class="text-button" type="button" data-username="octocat">octocat</button>, <button class="text-button" type="button" data-username="torvalds">torvalds</button>, or <button class="text-button" type="button" data-username="gaearon">gaearon</button></p>
+    </section>
+
+    <section id="results" class="results" aria-live="polite" aria-busy="false">
+      <div id="welcome-state" class="state-card">
+        <div class="state-icon" aria-hidden="true">⌘</div>
+        <h2>Your search results will appear here.</h2>
+        <p>Enter a public GitHub username above to get started.</p>
+      </div>
+
+      <div id="loading-state" class="state-card hidden">
+        <div class="loader" aria-label="Loading"></div>
+        <h2>Searching GitHub…</h2>
+        <p>Fetching profile details and recent repositories.</p>
+      </div>
+
+      <div id="error-state" class="state-card error-card hidden" role="alert">
+        <div class="state-icon error-icon" aria-hidden="true">!</div>
+        <h2 id="error-title">User not found</h2>
+        <p id="error-message">Please check the username and try again.</p>
+      </div>
+
+      <article id="profile-card" class="profile-card hidden">
+        <header class="profile-header">
+          <img id="avatar" class="avatar" src="" alt="" />
+          <div class="profile-heading">
+            <p id="profile-name" class="profile-name"></p>
+            <a id="profile-login" class="profile-login" href="" target="_blank" rel="noopener noreferrer"></a>
+          </div>
+          <a id="github-link" class="visit-link" href="" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+        </header>
+        <p id="bio" class="bio"></p>
+        <div class="stats" aria-label="Profile statistics">
+          <div><strong id="followers">0</strong><span>Followers</span></div>
+          <div><strong id="following">0</strong><span>Following</span></div>
+          <div><strong id="public-repos">0</strong><span>Public repos</span></div>
+        </div>
+        <div class="repositories-section">
+          <div class="section-heading"><h2>Latest repositories</h2><span>5 most recent</span></div>
+          <div id="repositories" class="repositories"></div>
+        </div>
+      </article>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
