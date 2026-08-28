@@ -1,3 +1,4 @@
+https://github-profile-searcher-bhuvan.netlify.app/
 # GitHub Profile Searcher
 
 A beginner-friendly, responsive web app that searches the public GitHub API for a user profile and their five most recently updated public repositories.
